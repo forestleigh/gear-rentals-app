@@ -1,0 +1,38 @@
+@import '_variables.scss';
+
+.rentButton,
+.returnButton,
+.editButton,
+.createButton {
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 3px;
+  font-size: 0.75rem;
+}
+
+.rentButton,
+.createButton {
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+  color: whitesmoke;
+}
+
+.returnButton, 
+.editButton {
+  background-color: white;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+}
+
+.rentButton:hover,
+.createButton:hover {
+    background-color: complement(yellow) ;
+}
+
+.returnButton:hover,
+.editButton:hover {
+    background-color: saturate($color: $super-light-grey, $amount: 0.5);
+}

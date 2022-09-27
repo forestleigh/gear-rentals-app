@@ -1,0 +1,55 @@
+@import '_variables.scss';
+
+// body {
+//   background: url('../assets/texas-canyon.jpeg') no-repeat center fixed;
+//   background-size: cover;
+// }
+
+html {
+  height: 300%;
+}
+
+.header-container {
+  position:relative;
+
+  header {
+    background-color: $super-light-grey;
+    color: $primary-black;
+    position:absolute;
+    top: -10;
+    left: -10;
+    right: 0;
+    width: 120%;
+    padding: 0.1rem;
+    height: 70px;
+    padding-left: 20px;
+  }
+
+  section {
+    background-color: $super-light-grey;
+    color: $primary-black;
+    position: absolute;
+    top: 80px;
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+    border-radius: 5%;
+  }
+
+}
+
+
+
+.itemDisplay {
+    background-color: $super-light-grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+.outerBox {
+    border: 5px solid $super-light-grey;
+    border-radius: 5%;
+}

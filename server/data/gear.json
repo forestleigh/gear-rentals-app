@@ -1,0 +1,92 @@
+[
+  {
+    "_id": 1,
+    "itemName": "GriGri",
+    "itemDescription": "Belay Device",
+    "NumberAvailable": 8
+  },
+  {
+      "_id": 2,
+      "itemName": "Harness",
+      "itemDescription": "Climbing Harness",
+      "NumberAvailable": 10
+  },
+  {
+      "_id": 3,
+      "itemName": "Chalk Bag",
+      "itemDescription": "Clippable Chalk Bag",
+      "NumberAvailable": 12
+  },
+  {
+      "_id": 5,
+      "itemName": "Rope",
+      "itemDescription": "Dynamic 80m Climbing Rope",
+      "NumberAvailable": 5
+  },
+  {
+    "_id": 6,
+    "itemName": "Helmet",
+    "itemDescription": "Saftey Helmet",
+    "NumberAvailable": 11
+  },
+  {
+    "_id": 7,
+    "itemName": "GoPro",
+    "itemDescription": "Helmet Camera",
+    "NumberAvailable": 3
+  }, 
+  {
+    "_id": 8,
+    "itemName": "Stick Clip",
+    "itemDescription": "Saftey equiment",
+    "NumberAvailable": 4
+  },
+  {
+    "_id": 9,
+    "itemName": "Trad Rack",
+    "itemDescription": "Traditional Climbing Rack",
+    "NumberAvailable": 2
+  },
+  {
+    "_id": 10,
+    "itemName": "Headlamp",
+    "itemDescription": "Light for approach/descent",
+    "NumberAvailable": 15
+  },
+  {
+    "_id": 11,
+    "itemName": "Tiblock",
+    "itemDescription": "Emergency rope ascender",
+    "NumberAvailable": 5
+  },
+  {
+    "_id": 12,
+    "itemName": "ATC",
+    "itemDescription": "Belay Device",
+    "NumberAvailable": 7
+  },
+  {
+    "_id": 13,
+    "itemName": "Quickdraws",
+    "itemDescription": "Set of 12 Quickdraws",
+    "NumberAvailable": 9
+  },
+  {
+    "_id": 14,
+    "itemName": "Cookstove",
+    "itemDescription": "Backcountry Cookstove",
+    "NumberAvailable": 2
+  },
+  {
+    "_id": 15,
+    "itemName": "First aid kit",
+    "itemDescription": "Saftey equiment",
+    "NumberAvailable": 20
+  },
+  {
+    "_id": 16,
+    "itemName": "Anchors",
+    "itemDescription": "Static, extendable Anchors",
+    "NumberAvailable": 9
+  }
+]
