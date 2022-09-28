@@ -18,14 +18,13 @@ itemController.getGear = (req, res, next) => {
 }
 
 // create functionality
-itemController.addGear = async (req, res, next) => {
+itemController.addGear = (req, res, next) => {
   const { itemName, itemDescription, numberAvailable } = req.body;
-  // if (itemName && itemDescription && numberAvailable) {
     models.Gear.create({
       itemName, itemDescription, numberAvailable
     })
     .then(gearDoc => {
-      res.locals.gear = gearDoc;
+      res.locals.newGear = gearDoc;
       next();
     })
     .catch(err => {
@@ -34,12 +33,22 @@ itemController.addGear = async (req, res, next) => {
         message: { err: 'Error occured in itemController.addGear. Check server logs for detials.' },
       });
     });
-  // }
 }
 
-// update functionality
+// update functionality (PATCH)
 itemController.updateGear = (req, res, next) => {
-  
+  const _id = req.query.id;
+  // const { itemName, itemDescription, numberAvailable } = req.body;
+  models.Gear.findByIdAndUpdate( _id , req.body, {new: true}).exec()
+    .then(gearDoc => {
+      res.locals.updatedGear = gearDoc;
+    })
+    .catch(err => {
+      next({
+        log: `itemController.updateGear: ERROR: ${err}`,
+        message: { err: 'Error occured in itemController.updateGear. Check server logs for detials.' },
+      });
+    });
 };
 
 // delete functionality

@@ -41,6 +41,11 @@ app.post('/gear', itemController.addGear, (req, res) => {
   res.status(200).json(res.locals.newGear);
 })
 
+app.patch('/gear?:id', itemController.updateGear, (req, res) => {
+  // should return an object
+  res.status(200).json(res.locals.updatedGear);
+})
+
 // catch-all route handler for requests to unknown routes
 app.use((req, res) => res.status(404).send('Page Not Found'));
 
