@@ -1,57 +1,41 @@
-const db = require('./itemModels');
-const mongoose = require('mongoose');
+const models = require('./itemModels');
 
 const itemController = {};
 
 // read functionality
-itemController.getGear = async (req, res, next) => {
-  const allGear = await db.find({});
-
-  try {
-    res.locals.gear = allGear;
+itemController.getGear = (req, res, next) => {
+  models.Gear.find({}).exec()
+  .then(gearDocs => {
+    res.locals.gear = gearDocs;
     next();
-  } catch (error) {
+  })
+  .catch(err => {
     next({
-        log: 'Error getting gear in itemController.getGear',
-        status: 500,
-        message: { err: error },
-      })
-  }
-};
+      log: `itemController.getGear: ERROR: ${err}`,
+      message: { err: 'Error occured in itemController.getGear. Check server logs for detials.' },
+    });
+  });
+}
 
 // create functionality
 itemController.addGear = async (req, res, next) => {
-  const {itemName, itemDescription, numberAvailable } = req.body;
-  if (!itemName | !itemDescription | !numberAvailable) {
-    console.log('incomplete req.body');
-    next({
-      log: 'Error adding new gear as some fields are undefined',
-      status: 500,
-      message: { err: 'Some fields undefined' },
+  const { itemName, itemDescription, numberAvailable } = req.body;
+  // if (itemName && itemDescription && numberAvailable) {
+    models.Gear.create({
+      itemName, itemDescription, numberAvailable
     })
-  }
-
-  const newGear = new Gear ({
-    itemName: itemName,
-    itemDescription: itemDescription,
-    numberAvailable: numberAvailable
-  })
-  newGear.save()
-    .then((result) => {
-      res.locals.newGear = {
-        message: "User Created Successfully",
-        result,
-      };
+    .then(gearDoc => {
+      res.locals.gear = gearDoc;
       next();
     })
-    .catch((error) => {
+    .catch(err => {
       next({
-        log: 'Error adding new gear in itemController.addGear',
-        status: 500,
-        message: { err: error },
-      })
+        log: `itemController.addGear: ERROR: ${err}`,
+        message: { err: 'Error occured in itemController.addGear. Check server logs for detials.' },
+      });
     });
-};
+  // }
+}
 
 // update functionality
 itemController.updateGear = (req, res, next) => {

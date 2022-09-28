@@ -8,14 +8,14 @@ const NODE_ENV = process.env.NODE_ENV;
 const itemController = require('./itemController')
 const db = require('./itemModels');
 
-// if (NODE_ENV === 'production') {
+if (NODE_ENV === 'production') {
     // statically serve everything in the webpack build 
     app.use('/dist', express.static(path.join(__dirname, '../dist')));
     // serve index.html on the route '/'
     app.get('/', (req, res) => {
       return res.status(200).sendFile(path.join(__dirname, '../index.html'));
     });
-  // }
+  }
 
 app.use(express.json());
 
@@ -25,6 +25,12 @@ const logger = function (req, res, next) {
 }
 
 app.get('/gear', logger, itemController.getGear, (req, res) => {
+  // res.json(db.find({}));
+  // should return an array of objects
+  res.status(200).json(res.locals.gear);
+})
+
+app.get('/api/gear', logger, itemController.getGear, (req, res) => {
   // res.json(db.find({}));
   // should return an array of objects
   res.status(200).json(res.locals.gear);

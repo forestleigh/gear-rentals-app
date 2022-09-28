@@ -43,14 +43,18 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'client'),
     },
-    // proxy: {
-    //   '/api': 'http://localhost:3000',
-    // },
+    proxy: {
+      '/api': {
+        'target': 'http://[::1]:3000',
+        'secure': false,
+        'changeOrigin': true
+      },
+    },
     port: 8080
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Surf Club Rentals",
+      title: 'Alpine Club Rentals',
       template: './index.html',
     }),
     new webpack.DefinePlugin({

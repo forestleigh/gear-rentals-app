@@ -12,13 +12,14 @@ mongoose.connect(MONGO_URI, {
   .catch(err => console.log(err));
 
 const Schema = mongoose.Schema;
-const GearSchema = new Schema({
-  itemName: String,
-  itemDescription: String,
-  numberAvailable: Number,
+
+const gearSchema = new Schema({
+  itemName: { type: String, required: true },
+  itemDescription: { type: String, required: true },
+  numberAvailable: { type: Number, required: true },
 });
 
-const Gear = mongoose.model('Gear', GearSchema);
+const Gear = mongoose.model('gear', gearSchema);
 
 // these models are used in the controller
 module.exports = {Gear};
