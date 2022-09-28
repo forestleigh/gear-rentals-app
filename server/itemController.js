@@ -1,4 +1,5 @@
 const models = require('./itemModels');
+const db = require('./itemModels');
 
 const itemController = {};
 
@@ -35,25 +36,25 @@ itemController.addGear = (req, res, next) => {
     });
 }
 
-// update functionality (PATCH)
-itemController.updateGear = (req, res, next) => {
-  const _id = req.query.id;
-  // const { itemName, itemDescription, numberAvailable } = req.body;
-  models.Gear.findByIdAndUpdate( _id , req.body, {new: true}).exec()
-    .then(gearDoc => {
-      res.locals.updatedGear = gearDoc;
-    })
-    .catch(err => {
-      next({
-        log: `itemController.updateGear: ERROR: ${err}`,
-        message: { err: 'Error occured in itemController.updateGear. Check server logs for detials.' },
-      });
-    });
-};
+// // update functionality (PATCH)
+// itemController.updateGear = (req, res, next) => {
+//   const _id = req.query.id;
+//   // const { itemName, itemDescription, numberAvailable } = req.body;
+//   models.Gear.findByIdAndUpdate( _id , req.body, {new: true}).exec()
+//     .then(gearDoc => {
+//       res.locals.updatedGear = gearDoc;
+//     })
+//     .catch(err => {
+//       next({
+//         log: `itemController.updateGear: ERROR: ${err}`,
+//         message: { err: 'Error occured in itemController.updateGear. Check server logs for detials.' },
+//       });
+//     });
+// };
 
-// delete functionality
-itemController.deleteGear = (req, res, next) => {
+// // delete functionality
+// itemController.deleteGear = (req, res, next) => {
 
-};
+// };
 
 module.exports = itemController;

@@ -15,7 +15,7 @@ class ItemContainer extends Component {
   componentDidMount() {
     console.log('ItemContainer mounted');
     console.log('ItemContainer props before fetch', props);
-    fetch('/gear') //GET is the default
+    fetch('/gear') //fetch data from server
       .then(res => res.json())
       .then((gear) => {
         console.log('gear from GET request on compoment did mount', gear);
