@@ -30,7 +30,6 @@ module.exports = {
           test: /\.s[ac]ss$/i,
           exclude: /(node_modules)/,
           use: [
-            // Creates `style` nodes from JS strings
             "style-loader",
             // Translates CSS into CommonJS
             "css-loader",
@@ -44,9 +43,9 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'client'),
     },
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
+    // proxy: {
+    //   '/api': 'http://localhost:3000',
+    // },
     port: 8080
   },
   plugins: [
