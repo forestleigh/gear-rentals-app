@@ -38,15 +38,12 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: 8080,
-    // enable HMR on the devServer
-    hot: true,
-    // fallback to root for other urls
-    historyApiFallback: true,
 
     static: {
       directory: path.join(__dirname, 'dist'),
       publicPath: ASSET_PATH
     },
+
     proxy: {
       '/api/**': {
         'target': 'http://[::1]:3000',

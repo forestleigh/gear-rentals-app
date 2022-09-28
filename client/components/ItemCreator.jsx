@@ -12,7 +12,6 @@ const useInput = init => {
   return [ value, onChange ];
 };
 
-
 const ItemCreator = props => {
   const [ itemName, itemNameOnChange ] = useInput('');
   const [ itemDescription, itemDescriptionOnChange ] = useInput('');

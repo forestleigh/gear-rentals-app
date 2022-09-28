@@ -6,8 +6,7 @@ import ItemCreator from './components/ItemCreator.jsx';
 
 import './scss/app.scss';
 
-const App = props => {
-  console.log('App props', props);
+const App = (props) => {
   return (
     <div>
       <Routes>
@@ -17,6 +16,25 @@ const App = props => {
       </Routes>
     </div>
   );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // return (
   //   <div className="router">
   //     <main>
@@ -46,6 +64,4 @@ const App = props => {
   //     </main>
   //   </div>
   // );
-};
-
-export default App;
+  //};

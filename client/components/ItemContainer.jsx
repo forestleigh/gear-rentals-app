@@ -65,7 +65,8 @@ class ItemContainer extends Component {
         </div>
       </section>
     );
-  }
-}
+  } //end of render
+
+} //end of component
 
 export default ItemContainer;
