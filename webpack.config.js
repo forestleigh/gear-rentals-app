@@ -10,7 +10,7 @@ module.exports = {
   entry: './client/index.js',
   output: {
     publicPath: ASSET_PATH,
-    // path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   mode: NODE_ENV,
@@ -30,35 +30,42 @@ module.exports = {
           test: /\.s[ac]ss$/i,
           exclude: /(node_modules)/,
           use: [
-            "style-loader",
-            // Translates CSS into CommonJS
-            "css-loader",
-            // Compiles Sass to CSS
-            "sass-loader",
+            "style-loader", "css-loader", "sass-loader",
           ],
         },
       ]
   },
   devServer: {
+    host: 'localhost',
+    port: 8080,
+    // enable HMR on the devServer
+    hot: true,
+    // fallback to root for other urls
+    historyApiFallback: true,
+
     static: {
-      directory: path.join(__dirname, 'client'),
+      directory: path.join(__dirname, 'dist'),
+      publicPath: ASSET_PATH
     },
     proxy: {
-      '/api': {
+      '/api/**': {
         'target': 'http://[::1]:3000',
         'secure': false,
         'changeOrigin': true
       },
-    },
-    port: 8080
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Alpine Club Rentals',
-      template: './index.html',
+      template: './client/index.html',
     }),
     new webpack.DefinePlugin({
       'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
     }),
   ],
+  resolve: {
+    // Enable importing JS / JSX files without specifying their extension
+    extensions: ['.js', '.jsx'],
+  },
 }

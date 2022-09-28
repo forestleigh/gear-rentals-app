@@ -13,6 +13,8 @@ class ItemContainer extends Component {
   }
 
   componentDidMount() {
+    console.log('ItemContainer mounted');
+    console.log('ItemContainer props before fetch', props);
     fetch('/gear') //GET is the default
       .then(res => res.json())
       .then((gear) => {
@@ -41,10 +43,7 @@ class ItemContainer extends Component {
 
     const gearElems = gear.map((item, i) => {
       return (
-        <ItemCard
-          key={i}
-          info={item}
-        />
+        <ItemCard key={i} info={item} />
       );
     });
 

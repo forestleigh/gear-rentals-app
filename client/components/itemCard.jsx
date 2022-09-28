@@ -2,6 +2,7 @@ import React from 'react';
 
 const ItemCard = ({info}) => {
   const { itemName, itemDescription, numberAvailable } = info;
+  console.log('ItemCard info from props', info);
 
   return (
     <article>

@@ -7,35 +7,45 @@ import ItemCreator from './components/ItemCreator.jsx';
 import './scss/app.scss';
 
 const App = props => {
+  console.log('App props', props);
   return (
-    <div className="router">
-      <main>
-        {/*
-            NOTE: The syntax below is for React-Router
-              - A <Switch> looks through its children <Route>s and 
-              renders the first one that matches the current URL.
-              https://reacttraining.com/react-router/web/guides/quick-start
-        */}
-        <Routes>
-          <Route
-            exact
-            path="/"
-            component={ItemContainer}
-          />
-          <Route
-            exact
-            path="/create"
-            component={ItemCreator}
-          />
-          {/* <Route
-            exact
-            path="/login"
-            component={login}
-          /> */}
-        </Routes>
-      </main>
+    <div>
+      <Routes>
+        <Route path="/" element={<ItemContainer />} />
+        <Route path="/create" element={<ItemCreator />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+      </Routes>
     </div>
   );
+  // return (
+  //   <div className="router">
+  //     <main>
+  //       {/*
+  //           NOTE: The syntax below is for React-Router
+  //             - A <Switch> looks through its children <Route>s and 
+  //             renders the first one that matches the current URL.
+  //             https://reacttraining.com/react-router/web/guides/quick-start
+  //       */}
+  //       <Routes>
+  //         <Route
+  //           exact
+  //           path="/"
+  //           component={ItemContainer}
+  //         />
+  //         <Route
+  //           exact
+  //           path="/create"
+  //           component={ItemCreator}
+  //         />
+  //         {/* <Route
+  //           exact
+  //           path="/login"
+  //           component={login}
+  //         /> */}
+  //       </Routes>
+  //     </main>
+  //   </div>
+  // );
 };
 
 export default App;
