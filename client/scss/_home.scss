@@ -64,6 +64,13 @@ html {
 
 }
 
+.member-login {
+  position: absolute;
+  top: 20px;
+  left: 550px;
+  z-index: 0;
+}
+
 #root {
   position:absolute;
   top: 225px;
@@ -92,8 +99,8 @@ html {
     flex-wrap: wrap;
     background-color: $super-light-grey;
     color: $primary-black;
-    min-width: 30px;
-    max-width:300px;
+    // min-width: 30px;
+    // max-width:300px;
     padding: 0.1rem;
     padding-left: 20px;
     padding-right: 20px;

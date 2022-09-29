@@ -130,17 +130,20 @@ class ItemContainer extends Component {
     });
 
     return (
-      <section>
-        <header className="inventory">
-          <h2 className="inventoryTitle">Current Inventory</h2>
-        </header>
-        <div className="cardsHolder">
-          {gearElems}
-        </div>
-        <div>
-          <ItemCreator props={gear} />
-        </div>
-      </section>
+      <div className='item-container'>
+          <section>
+            <header className="inventory">
+              <h2 className="inventoryTitle">Current Inventory</h2>
+            </header>
+            <div className="cards-holder">
+              {gearElems}
+            </div>
+            <div>
+              <ItemCreator props={gear} />
+            </div>
+          </section>
+      </div>
+      
     );
   } //end of render
 
