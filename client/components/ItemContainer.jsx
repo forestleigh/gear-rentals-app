@@ -33,14 +33,6 @@ class ItemContainer extends Component {
       .catch(err => console.log('Gear.componentDidMount: get gear: ERROR: ', err));
   }
 
-  // updateItem(id, numberAvaialable) {
-  //   // make deep copy of gear array
-  //   const itemsById = JSON.parse(JSON.stringify(this.state.gear));
-  //   itemsById[id] = character;
-  //   this.setState({ charactersById });
-  //   return true;
-  // }
-
   render() {
     if (!this.state.fetchedGear) return (
       <div>

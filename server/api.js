@@ -26,22 +26,16 @@ loggerPOST,
   (req, res) => res.status(201).json(res.locals.newGear)
 );
 
-router.patch('/gear?_id=:id',
+router.patch('/gear/:id',
   // itemController.getOneItem,
   itemController.updateItem,
   (req, res) => res.status(200).json(res.locals.updatedGear)
 );
 
-router.delete('/gear?_id=:id',
+router.delete('/gear/:id',
   // itemController.getOneItem,
   itemController.deleteItem,
   (req, res) => res.status(200).json(res.locals.deletedGear)
 );
-
-// router.put('/gear/:id',
-//   itemController.getOneItem,
-//   itemController.editItem,
-//   (req, res) => res.status(200).json('deleted')
-// );
 
 module.exports = router;

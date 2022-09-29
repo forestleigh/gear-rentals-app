@@ -37,10 +37,9 @@ itemController.addGear = (req, res, next) => {
     });
 }
 
-// find item with ID (for use in all following controller functions)
+// find item with ID 
 itemController.getOneItem = (req, res, next) => {
-  const _id = req.query.id;
-  models.Gear.find({ _id }, (err, doc) => {
+  models.Gear.find({ _id: req.params.id }, (err, doc) => {
     if (err) { return next({
         log: `itemController.getOneItem: ERROR: ${err}`,
         message: { err: 'Error occured in itemController.getOneItem. Check server logs for detials.' }
@@ -51,56 +50,39 @@ itemController.getOneItem = (req, res, next) => {
 };
 
 // update functionality (PUT)
-itemController.updateItem = (req, res, next) => {
-  model.Gear.findByIdAndUpdate(req.params.id, req.body).exec()
-  .then(updatedDoc => {
-    if (!updatedDoc) {return res.status(404).end(); }
-    res.locals.updatedGear = updatedDoc;
-    return next();
-  })
-  .catch(err => {
-    return next({
-        log: `itemController.updateItem: ERROR: ${err}`,
-        message: { err: 'Error occured in itemController.updateItem. Check server logs for detials.' }
-    });
-  });
-};
+itemController.updateItem = async (req, res, next) => {
+  const { numberAvailable } = req.body;
+  const updatedNumber = Number(numberAvailable);
+  models.Gear.findByIdAndUpdate({ _id: req.params.id },
+    { numberAvailable: updatedNumber }, { upsert: true }, function (err, docs) {
+      if (err) {
+        return next({
+          log: `itemController.updateItem: ERROR: ${err}`,
+          message: { err: 'Error occured in itemController.updateItem. Check server logs for detials.' }
+        });
+      } else {
+        console.log(docs)
+        res.locals.updatedGear = docs;
+        return next();
+      }
+    })
+  };
 
-// delete functionality
-itemController.deleteItem = (req, res, next) => {
-  models.Gear.findByIdAndRemove(req.params.id).exec()
-  .then(doc => {
-    if (!doc) {return res.status(404).end(); }
-    res.locals.deletedGear = doc;
-    return next();
-  })
-  .catch(err => {
-    return next({
-      log: `itemController.deleteItem: ERROR: ${err}`,
-      message: { err: 'Error occured in itemController.deleteItem. Check server logs for detials.' }
-    });
-  });
-}
-
-// // update functionality (PATCH)
-// itemController.editGear = (req, res, next) => {
-//   const _id = req.query.id;
-//   // const { itemName, itemDescription, numberAvailable } = req.body;
-//   models.Gear.findByIdAndUpdate( _id , req.body, {new: true}).exec()
-//     .then(gearDoc => {
-//       res.locals.updatedGear = gearDoc;
-//     })
-//     .catch(err => {
-//       next({
-//         log: `itemController.updateGear: ERROR: ${err}`,
-//         message: { err: 'Error occured in itemController.updateGear. Check server logs for detials.' },
-//       });
-//     });
-// };
-
-// // delete functionality
-// itemController.deleteGear = (req, res, next) => {
-
-// };
+// delete functionality 
+itemController.deleteItem = async (req, res, next) => {
+  models.Gear.findByIdAndRemove({ _id: req.params.id },
+    function (err, docs) {
+      if (err) {
+        return next({
+          log: `itemController.deleteItem: ERROR: ${err}`,
+          message: { err: 'Error occured in itemController.deleteItem. Check server logs for detials.' }
+        });
+      } else {
+        console.log(docs)
+        res.locals.deletedGear = docs;
+        return next();
+      }
+    })
+  };
 
 module.exports = itemController;

@@ -15,8 +15,9 @@ const ItemCard = ({info }) => {
           <li>Number Available: {numberAvailable}</li>
         </ul>
         <div className="rentalButtonContainer">
-          <button type="button" className="returnButton" >Return</button>
           <button type="button" className="rentButton" >Rent</button>
+          <button type="button" className="rentButton" >Return</button>
+          <button type="button" className="cancelButton" >delete</button>
         </div>
       </div>
     </article>
