@@ -15,7 +15,7 @@ const loggerGET = function (req, res, next) {
   }
 
 router.get('/',
-loggerGET,
+  loggerGET,
   itemController.getGear,
   (req, res) => res.status(200).json(res.locals.gear)
 );
@@ -23,22 +23,25 @@ loggerGET,
 router.post('/gear',
 loggerPOST,
   itemController.addGear,
-  (req, res) => res.status(200).json('completed')
+  (req, res) => res.status(201).json(res.locals.newGear)
 );
 
-router.put('/gear/:id',
-  itemController.updateGear,
-  (req, res) => res.status(200).json('completed')
+router.patch('/gear?_id=:id',
+  // itemController.getOneItem,
+  itemController.updateItem,
+  (req, res) => res.status(200).json(res.locals.updatedGear)
 );
 
-// router.patch('/gear/:id',
-//   itemController.addGear,
-//   (req, res) => res.status(200).json('completed')
-// );
+router.delete('/gear?_id=:id',
+  // itemController.getOneItem,
+  itemController.deleteItem,
+  (req, res) => res.status(200).json(res.locals.deletedGear)
+);
 
-// router.delete('/gear',
-//   itemController.addGear,
-//   (req, res) => res.status(200).json('completed')
+// router.put('/gear/:id',
+//   itemController.getOneItem,
+//   itemController.editItem,
+//   (req, res) => res.status(200).json('deleted')
 // );
 
 module.exports = router;

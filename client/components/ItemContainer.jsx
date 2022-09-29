@@ -14,6 +14,7 @@ class ItemContainer extends Component {
       fetchedGear: false,
       gear: [],
     };
+    // this.updateItem = this.updateItem.bind(this);
   }
 
   componentDidMount() {
@@ -32,22 +33,33 @@ class ItemContainer extends Component {
       .catch(err => console.log('Gear.componentDidMount: get gear: ERROR: ', err));
   }
 
+  // updateItem(id, numberAvaialable) {
+  //   // make deep copy of gear array
+  //   const itemsById = JSON.parse(JSON.stringify(this.state.gear));
+  //   itemsById[id] = character;
+  //   this.setState({ charactersById });
+  //   return true;
+  // }
+
   render() {
     if (!this.state.fetchedGear) return (
       <div>
-        <h1>Loading data, please wait...</h1>
+        <p className='annoucements'>Loading data, please wait...</p>
       </div>
     );
 
     const { gear } = this.state;
     if (!gear) return null;
     if (!gear.length) return (
-      <div>Sorry, no rental items found</div>
+      <p className='annoucements'>Sorry, no rental items found</p>
     );
 
     const gearElems = gear.map((item, i) => {
       return (
-        <ItemCard key={i} info={item} />
+        <ItemCard key={i} 
+        info={item}
+        
+        />
       );
     });
 

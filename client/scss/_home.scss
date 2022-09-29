@@ -10,6 +10,15 @@ html {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+  .announcements {
+      color: $primary-color;
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+      padding-top: 20px;
+  }
+
 .header-container {
   position:relative;
 
