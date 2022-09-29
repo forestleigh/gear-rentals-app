@@ -1,20 +1,23 @@
 import React from 'react';
-import { Routes ,Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// need this when you use functional components in react
+import props from 'prop-types';
 
 import ItemContainer from './components/ItemContainer.jsx';
 import ItemCreator from './components/ItemCreator.jsx';
 
 import './scss/app.scss';
 
-const App = (props) => {
+const App = props => {
+  // make sure to use your Links ONLY within a <Router> context
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<ItemContainer />} />
-        <Route path="/create" element={<ItemCreator />} />
-        {/* <Route path="/login" element={<Login />} /> */}
-      </Routes>
-    </div>
+      <div>
+        <Routes>
+          <Route path="/" element={<ItemContainer />} />
+          <Route path="/create" element={<ItemCreator />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+        </Routes>
+      </div>
   );
 }
 

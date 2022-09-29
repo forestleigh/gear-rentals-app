@@ -26,7 +26,12 @@ loggerPOST,
   (req, res) => res.status(200).json('completed')
 );
 
-// router.patch('/gear',
+router.put('/gear/:id',
+  itemController.updateGear,
+  (req, res) => res.status(200).json('completed')
+);
+
+// router.patch('/gear/:id',
 //   itemController.addGear,
 //   (req, res) => res.status(200).json('completed')
 // );

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+// need this when you use functional components in react
+import props from 'prop-types';
 
 // Custom hook for handling input boxes
 // saves us from creating onChange handlers for them individually
@@ -33,7 +35,7 @@ const ItemCreator = props => {
         itemDescription,
         numberAvailable,
       };
-      fetch('/gear', {
+      fetch('/api/gear', {
         method: 'POST',
         headers: {
           'Content-Type': 'Application/JSON'
@@ -70,11 +72,7 @@ const ItemCreator = props => {
       <section>
         <header>
           <h2>Add New Rental Gear</h2>
-          <Link to="/">
-            <button type="button" className="cancelButton">
-                Back to all rental gear
-            </button>
-          </Link>
+            <Link to="/">Back to Inventory</Link>
         </header>
         <article>
           <h3>Enter your gear details</h3>
@@ -94,11 +92,7 @@ const ItemCreator = props => {
             {numberAvailableError ? (<span className="errorMsg">{numberAvailableError}</span>) : null}
           </div>
           <div className="createItemButtonContainer">
-            <Link to="/">
-              <button type="button" className="cancelButton">
-                Cancel
-              </button>
-            </Link>
+              <Link to="/">Cancel</Link>
             <button type="button" className="createButton" onClick={saveItem}>Save</button>
           </div>
         </article>

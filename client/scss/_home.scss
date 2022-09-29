@@ -1,9 +1,9 @@
 @import '_variables.scss';
 
-// body {
-//   background: url('../assets/texas-canyon-exsm.jpg') no-repeat center fixed;
-//   background-size: cover;
-// }
+body {
+  background: url('../assets/texas-canyon-exsm.jpg') no-repeat center fixed;
+  background-size: cover;
+}
 
 html {
   height: 300%;
@@ -24,9 +24,12 @@ html {
     padding: 0.1rem;
     height: 200px;
     padding-left: 20px;
+    border: 0.5px solid $primary-color;
+    box-shadow: 0 2px 2px $primary-color;
   }
 
   h1{
+    color: $primary-color;
     font-size: 2.3rem;
     font-weight: 300;
     margin: 0;
@@ -70,4 +73,31 @@ html {
 .outerBox {
     border: 5px solid $super-light-grey;
     border-radius: 5%;
+}
+
+.inventory {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: $super-light-grey;
+    color: $primary-black;
+    min-width: 30px;
+    max-width:300px;
+    padding: 0.1rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5%;
+    border: 0.5px solid $primary-color;
+    box-shadow: 0 2px 2px $primary-color;
+    margin: 10px;
+
+    .inventoryTitle {
+      font-size: 1.7rem;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+    }
+
 }

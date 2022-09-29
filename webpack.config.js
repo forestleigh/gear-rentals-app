@@ -7,18 +7,19 @@ const ASSET_PATH = process.env.ASSET_PATH || '/';
 const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './client/index.jsx',
   output: {
     publicPath: ASSET_PATH,
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+  devtool: "source-map", //this is iffy...
   mode: NODE_ENV,
   module: {
     rules: [
         {
           test: /\.jsx?/,
-          exclude: /(node_modules)/,
+          exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
@@ -28,7 +29,7 @@ module.exports = {
         },
         {
           test: /\.s[ac]ss$/i,
-          exclude: /(node_modules)/,
+          exclude: /node_modules/,
           use: [
             "style-loader", "css-loader", "sass-loader",
           ],

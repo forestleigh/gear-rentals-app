@@ -36,8 +36,23 @@ itemController.addGear = (req, res, next) => {
     });
 }
 
+// update functionality (PUT)
+itemController.updateGear = (req, res, next) => {
+  const { _id, itemName, itemDescription, numberAvailable } = req.body;
+  models.Gear.findByIdAndUpdate( _id , req.body, {new: true}).exec()
+    .then(gearDoc => {
+      res.locals.updatedGear = gearDoc;
+    })
+    .catch(err => {
+      next({
+        log: `itemController.updateGear: ERROR: ${err}`,
+        message: { err: 'Error occured in itemController.updateGear. Check server logs for detials.' },
+      });
+    });
+};
+
 // // update functionality (PATCH)
-// itemController.updateGear = (req, res, next) => {
+// itemController.editGear = (req, res, next) => {
 //   const _id = req.query.id;
 //   // const { itemName, itemDescription, numberAvailable } = req.body;
 //   models.Gear.findByIdAndUpdate( _id , req.body, {new: true}).exec()

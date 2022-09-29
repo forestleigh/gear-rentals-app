@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+// import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+// need this when you use functional components in react
+import props from 'prop-types';
 
 import ItemCard from './ItemCard.jsx';
+import ItemCreator from './ItemCreator.jsx';
 
 class ItemContainer extends Component {
   constructor(props) {
@@ -14,11 +18,11 @@ class ItemContainer extends Component {
 
   componentDidMount() {
     console.log('ItemContainer mounted');
-    console.log('ItemContainer props before fetch', props);
-    fetch('/gear') //fetch data from server
+    // console.log('ItemContainer props before fetch', props);
+    fetch('/api') //fetch data from server
       .then(res => res.json())
       .then((gear) => {
-        console.log('gear from GET request on compoment did mount', gear);
+        // console.log('gear from GET request on compoment did mount', gear);
         if (!Array.isArray(gear)) gear = [];
         return this.setState({
           gear,
@@ -49,19 +53,14 @@ class ItemContainer extends Component {
 
     return (
       <section>
-        <header>
-          <h2>Current Inventory</h2>
+        <header className="inventory">
+          <h2 className="inventoryTitle">Current Inventory</h2>
         </header>
-        <div>
+        <div className="cardsHolder">
           {gearElems}
         </div>
         <div>
-          <Link to={'/create'}>
-            <button type="button"
-              className="createButton"
-            >Add New Gear
-            </button>
-          </Link>
+          <Link to="/create">Add New Gear Item</Link>
         </div>
       </section>
     );
