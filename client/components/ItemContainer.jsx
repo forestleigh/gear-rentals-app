@@ -14,7 +14,9 @@ class ItemContainer extends Component {
       fetchedGear: false,
       gear: [],
     };
-    // this.updateItem = this.updateItem.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleRent = this.handleRent.bind(this);
+    this.handleReturn = this.handleReturn.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +33,75 @@ class ItemContainer extends Component {
         });
       })
       .catch(err => console.log('Gear.componentDidMount: get gear: ERROR: ', err));
+  }
+
+  handleDelete(id, e) {
+    e.preventDefault();
+    console.log('handleDelete called');
+    fetch(`/api/gear/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        console.log('res from DELETE request', res);
+        if (res.status === 200) {
+          const gear = this.state.gear.filter(item => item._id !== id);
+          this.setState({ gear });
+        }
+      })
+      .catch(err => console.log('ItemContainer.handleDelete: ERROR: ', err));
+  }
+
+  handleRent(id, numberAvailable, e) {
+    e.preventDefault();
+    console.log('handleRent called');
+    fetch(`/api/gear/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ numberAvailable: numberAvailable - 1 }),
+    })
+      .then((res) => {
+        console.log('res from PATCH request', res);
+        if (res.status === 200) {
+          const gear = this.state.gear.map((item) => {
+            if (item._id === id) {
+              item.numberAvailable -= 1;
+            }
+            return item;
+          });
+          this.setState({ gear });
+        }
+      })
+      .catch(err => console.log('ItemContainer.handleRent: ERROR: ', err));
+  }
+
+  handleReturn(id, numberAvailable, e) {
+    e.preventDefault();
+    console.log('handleReturn called');
+    fetch(`/api/gear/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ numberAvailable: numberAvailable + 1 }),
+    })
+      .then((res) => {
+        console.log('res from PATCH request', res);
+        if (res.status === 200) {
+          const gear = this.state.gear.map((item) => {
+            if (item._id === id) {
+              item.numberAvailable += 1;
+            }
+            return item;
+          });
+          this.setState({ gear });
+        }
+      })
+      .catch(err => console.log('ItemContainer.handleReturn: ERROR: ', err));
   }
 
   render() {
@@ -50,7 +121,9 @@ class ItemContainer extends Component {
       return (
         <ItemCard key={i} 
         info={item}
-        
+        handleDelete={this.handleDelete}
+        handleRent={this.handleRent}
+        handleReturn={this.handleReturn}
         />
       );
     });
