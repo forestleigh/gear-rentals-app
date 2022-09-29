@@ -1,0 +1,45 @@
+html {
+    height: 300%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+    .formCard {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      background-color: $super-light-grey;
+      color: $primary-black;
+      padding: 0.1rem;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 5%;
+      border: 0.5px solid $primary-color;
+      box-shadow: 0 2px 2px $primary-color;
+      margin: 10px;
+    }
+  
+    h2{
+        align-self: center;
+        font-size: 2rem;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+      }
+
+    h3{
+      align-self: center;
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin: 0;
+      padding: 5px;
+      padding-left: 15px;
+    }
+

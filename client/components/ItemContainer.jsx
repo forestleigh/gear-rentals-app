@@ -104,6 +104,7 @@ class ItemContainer extends Component {
       .catch(err => console.log('ItemContainer.handleReturn: ERROR: ', err));
   }
 
+
   render() {
     if (!this.state.fetchedGear) return (
       <div>
@@ -137,7 +138,7 @@ class ItemContainer extends Component {
           {gearElems}
         </div>
         <div>
-          <Link to="/create">Add New Gear Item</Link>
+          <ItemCreator props={gear} />
         </div>
       </section>
     );

@@ -1,6 +1,6 @@
 const { model } = require('mongoose');
 const models = require('./itemModels');
-const db = require('./itemModels');
+// const db = require('./itemModels');
 
 const itemController = {};
 

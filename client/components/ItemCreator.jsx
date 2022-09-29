@@ -5,8 +5,8 @@ import props from 'prop-types';
 
 // Custom hook for handling input boxes
 // saves us from creating onChange handlers for them individually
-const useInput = init => {
-  const [ value, setValue ] = useState(init);
+const useInput = init => { //this utilizes a react hook (use state) to simplify form handling
+  const [ value, setValue ] = useState(init); //similar to setState but works with functional components instead of class components
   const onChange = e => {
     setValue(e.target.value);
   };
@@ -46,53 +46,30 @@ const ItemCreator = props => {
         .then((data) => {
           console.log(data);
         })
-        .then(() => {
-          props.history.push('/');
-        })
         .catch(err => console.log('CreateGear fetch /gear: ERROR: ', err));
     }
   };
 
-    // useEffect to clear itemNameError when `itemName` is changed
-    useEffect(()=>{
-      setItemNameError(null);
-    }, [itemName]);
-
-    // useEffect to clear itemDescriptionError when `itemDescription` is changed
-    useEffect(()=>{
-      setItemDescriptionError(null);
-    }, [itemDescription]);
-  
-    // useEffect to clear setNumberAvailableError when `numberAvailable` is changed
-    useEffect(()=>{
-      setNumberAvailableError(null);
-    }, [numberAvailable]);
-
     return (
-      <section>
-        <header>
+      <section className="formCard">
+        <header >
           <h2>Add New Rental Gear</h2>
-            <Link to="/">Back to Inventory</Link>
         </header>
         <article>
           <h3>Enter your gear details</h3>
           <div>
             <label >Item Name: </label>
             <input name="itemName" placeholder="Gear name" value={itemName} onChange={itemNameOnChange} />
-            {itemNameError ? (<span className="errorMsg">{itemNameError}</span>) : null}
           </div>
           <div>
             <label>Item Description: </label>
-            <input name="itemDescription" value={itemDescription} onChange={itemDescriptionOnChange} />
-            {itemDescriptionError ? (<span className="errorMsg">{itemDescriptionError}</span>) : null}
+            <input name="itemDescription" placeholder="Gear description" value={itemDescription} onChange={itemDescriptionOnChange} />
           </div>
           <div>
             <label>Number Available: </label>
-            <input name="numberAvailable" placeholder="1" value={numberAvailable} onChange={numberAvailableOnChange} />
-            {numberAvailableError ? (<span className="errorMsg">{numberAvailableError}</span>) : null}
+            <input name="numberAvailable" placeholder="how many donated?" value={numberAvailable} onChange={numberAvailableOnChange} />
           </div>
           <div className="createItemButtonContainer">
-              <Link to="/">Cancel</Link>
             <button type="button" className="createButton" onClick={saveItem}>Save</button>
           </div>
         </article>
