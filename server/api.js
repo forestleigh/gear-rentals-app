@@ -5,14 +5,14 @@ const itemController = require('./itemController.js');
 const router = express.Router();
 
 const loggerGET = function (req, res, next) {
-    console.log('we have entered the GET requests');
-    return next();
-  }
+  console.log('we have entered the GET requests');
+  return next();
+};
 
-  const loggerPOST = function (req, res, next) {
-    console.log('we have entered the POST requests');
-    return next();
-  }
+const loggerPOST = function (req, res, next) {
+  console.log('we have entered the POST requests');
+  return next();
+};
 
 router.get('/',
   loggerGET,
@@ -21,7 +21,7 @@ router.get('/',
 );
 
 router.post('/gear',
-loggerPOST,
+  loggerPOST,
   itemController.addGear,
   (req, res) => res.status(201).json(res.locals.newGear)
 );

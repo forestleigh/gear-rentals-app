@@ -22,13 +22,13 @@ const ItemCreator = props => {
   const saveItem = () => {
     // check if itemName is empty
     if (itemName === '') {
-      setItemNameError('required');
+      // setItemNameError('required');
     // check if itemDescription is empty
     } else if (itemDescription === '') {
-      setItemDescriptionError('required');
+      // setItemDescriptionError('required');
       // check if numberAvaialable is not a number or is negative
     } else if (isNaN(numberAvailable) || numberAvailable < 0) {
-      setNumberAvailableError('must be a positive number');
+      // setNumberAvailableError('must be a positive number');
     } else {
       const body = {
         itemName,

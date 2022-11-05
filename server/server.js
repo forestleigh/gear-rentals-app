@@ -2,8 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const NODE_ENV = process.env.NODE_ENV;
-const http = require('http');
-const fs = require('fs');
+const PORT = process.env.PORT;
 
 const apiRouter = require('./api.js')
 
@@ -12,13 +11,16 @@ if (NODE_ENV === 'production') {
     app.use('/dist', express.static(path.join(__dirname, '../dist')));
   }
 
+// process data body and images 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//serve up the index file
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
+// direct to the aipr router
 app.use('/api', apiRouter);
 
 // catch-all route handler for requests to unknown routes
@@ -36,4 +38,4 @@ app.use((err, req, res, next) => {
     return res.status(errorObj.status).json(errorObj.message);
   });
 
-app.listen(3000); //listens on port 3000 -> http://localhost:3000/
+app.listen(PORT); 

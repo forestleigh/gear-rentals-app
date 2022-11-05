@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGO_URI = 'mongodb+srv://theforestleigh:Lav12022%21@cluster0.ol71v7m.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = process.env.API_URL;
 
 mongoose.connect(MONGO_URI, {
   //   these are options to ensure that the connection is done properly

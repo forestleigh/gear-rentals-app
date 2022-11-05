@@ -23,6 +23,7 @@ module.exports = {
           use: {
             loader: 'babel-loader',
             options: {
+              // Order Matters! Loads presets from end to beginning of array
               presets: ['@babel/preset-env','@babel/preset-react']
             }
           }
