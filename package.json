@@ -6,7 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve"
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve",
+    "client": "NODE_ENV=production node server/server.js & NODE_ENV=production webpack serve"
   },
   "nodemonConfig": {
     "ignore": [
@@ -17,6 +18,7 @@
   "author": "Forest Leigh https://github.com/forestleigh <theforestleigh@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "mongoose": "^6.6.2",
     "react": "^18.2.0",
