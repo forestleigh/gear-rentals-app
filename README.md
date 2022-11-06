@@ -2,9 +2,6 @@
 
 This repository contains the code for Alpine Gear Rental: An app for managing club inventory. 
 
-## Requirements
-npm
-
 ## Installation Steps
 
 1. clone repository
